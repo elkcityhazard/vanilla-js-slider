@@ -62,6 +62,7 @@ class Carousel {
       this.handleKeyDown(e)
     }.bind(this))
 
+    this.handleResize()
     window.addEventListener('resize', debounce(this.handleResize.bind(this), 300));
 
     this.innerContainer.addEventListener('pointerdown', this.handlePointerDown.bind(this))
