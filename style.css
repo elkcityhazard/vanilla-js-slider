@@ -1,7 +1,6 @@
 html,body {
   box-sizing: border-box;
   height:  100%;
-  width:  100%;
   display:  grid;
   place-items:  center;
 }
@@ -9,6 +8,12 @@ html,body {
 #app {
   height:  100%;
   width:  100%;
+  max-width:  100%;
+}
+
+main {
+  max-width:  100%;
+  margin:  auto;
 }
 
 .slide-wrapper {
@@ -16,8 +21,8 @@ html,body {
   position: relative;
   overflow:  hidden;
   margin:  auto;
-  max-width:  100%;
-  width: 768px;
+  max-width:  968px;
+  width: 100%;
   height:  100%;
 
 .slide-inner {
@@ -28,6 +33,7 @@ html,body {
   flex-flow: row nowrap;
   height:  100%;
   width:  100%;
+  max-width:  100%;
   transform:  translateX(-100%);
 
 }
@@ -44,6 +50,11 @@ html,body {
   place-items:  center;
   height:  100%;
   width:  100%;
+}
+
+.slide > img {
+  height:  auto;
+  max-width:  100%;
 }
 
 
