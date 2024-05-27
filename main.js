@@ -38,6 +38,7 @@ class Carousel {
     this.nextBtn.setAttribute('aria-controls', this.innerContainer.id)
     this.innerContainer.addEventListener('transitionend', this.handleTransitionEnd.bind(this), false)
     this.innerContainer.addEventListener('transitioncancel', this.handleTransitionCancel.bind(this), false)
+
     this.prevBtn.addEventListener('click', (e) => {
       e.target.focus()
       this.incrementSlide("reverse")
@@ -57,6 +58,10 @@ class Carousel {
       this.start()
     })
 
+    document.addEventListener('keydown', function(e){
+      this.handleKeyDown(e)
+    }.bind(this))
+
     this.innerContainer.addEventListener('pointerdown', this.handlePointerDown.bind(this))
     this.innerContainer.addEventListener('pointermove', this.handlePointerMove.bind(this))
     this.innerContainer.addEventListener('pointerup', this.handlePointerUp.bind(this))
@@ -69,8 +74,38 @@ class Carousel {
 
     this.updateButtons()
     this.setAriaCurrent()
-     this.innerContainer.setAttribute('role', 'slider')
+    this.disableDrag()
+    this.innerContainer.setAttribute('role', 'slider')
      this.start()
+  }
+
+  handleKeyDown(e) {
+    if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      this.incrementSlide("reverse");
+    } else if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      this.incrementSlide("forward");
+    }
+
+    if ("Escape" === e.key) {
+
+      // reset to beginning
+      e.preventDefault()
+      this.currentIndex = 0
+      this.incrementSlide("forward")
+    }
+  }
+
+  disableDrag() {
+    this.carousel.setAttribute('draggable', false)
+    this.innerContainer.setAttribute('draggable', false)
+    Array.from(this.innerContainer.children).forEach(child =>{
+        child.setAttribute('draggable', false)
+
+        Array.from(child.children).forEach(child => child.setAttribute('draggable', false))
+    })
+
   }
 
   handleTouchStart(e) {
