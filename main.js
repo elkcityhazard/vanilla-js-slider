@@ -54,7 +54,7 @@ class Carousel {
     })
 
     this.carousel.addEventListener('pointerleave', (e) => {
-      this.auto = true
+      this.auto = false
       this.start()
     })
 
@@ -93,7 +93,7 @@ class Carousel {
     clearInterval(this.timer)
     break
   case width >= 768:
-    this.auto = true
+    this.auto = false
     this.start()
     break
   default:
