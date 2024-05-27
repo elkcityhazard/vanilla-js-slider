@@ -24,6 +24,7 @@ main {
   max-width:  968px;
   width: 100%;
   height:  100%;
+}
 
 .slide-inner {
   cursor: grab;
@@ -65,7 +66,7 @@ main {
 #prev,
 #next {
   background: transparent;
-  border: 2px solid #fff;
+  outline: 2px solid #fff;
   color:  #fff;
   border-radius:  50%;
   display:  flex;
@@ -133,5 +134,5 @@ main {
  } 
 
 button:focus{
-  outline:  2px dashed black;
+  outline:  2px dotted #000;
 }
