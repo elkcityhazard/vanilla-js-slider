@@ -83,12 +83,15 @@ class Carousel {
   }
 
   handleResize() {
-    let {innerWidth = 0} = window
+    let width = window.innerWidth
+    console.log(width)
    switch (true) {
-   case innerWidth < 768:
+   case width < 768:
+    this.auto = false
     clearInterval(this.timer)
     break
-  case innerWidth >=768:
+  case width >= 768:
+    this.auto = true
     this.start()
     break
   default:
