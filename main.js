@@ -78,7 +78,10 @@ class Carousel {
     this.updateButtons()
     this.setAriaCurrent()
     this.disableDrag()
-    this.innerContainer.setAttribute('role', 'slider')
+    this.innerContainer.setAttribute('role', 'group')
+    this.innerContainer.setAttribute('aria-label', 'slide group')
+    this.innerContainer.setAttribute('title', 'slide group')
+    this.innerContainer.setAttribute('aria-live', 'polite')
      this.start()
   }
 
@@ -242,7 +245,7 @@ class Carousel {
       slide.setAttribute('data-index', index)
       slide.setAttribute('aria-label', `Slide #${index + 1}`)
       slide.setAttribute('title', `Slide #${index + 1}`)
-      slide.setAttribute("role", "presentational")
+      slide.setAttribute("aria-roledescription", "slide")
     })
   }
 
@@ -261,16 +264,15 @@ class Carousel {
   }
 
   setAriaCurrent(currentIndex) {
-    this.slides.forEach((slide, index) => {
-      if (index === this.currentIndex) {
-        slide.setAttribute('aria-current', true)
-      } else {
-
-        slide.setAttribute('aria-current', false)
-
-      }
-    })
-  }
+  this.slides.forEach((slide, index) => {
+    if (index === this.currentIndex) {
+      slide.setAttribute('aria-current', true);
+      this.innerContainer.setAttribute('aria-label', `Slide ${index + 1} of ${this.slides.length - 2}`);
+    } else {
+      slide.setAttribute('aria-current', false);
+    }
+  });
+}
 
   handleTransitionCancel(e) {
   
@@ -325,7 +327,9 @@ class Carousel {
     let nextVal = this.currentIndex + 1 > this.slides.length - 2 ? 1 : this.currentIndex + 1
 
     this.prevBtn.setAttribute('aria-label', `Go to slide #${prevVal}`)
+    this.prevBtn.title = this.prevBtn.getAttribute('aria-label')
     this.nextBtn.setAttribute('aria-label', `Go to slide #${nextVal}`)
+    this.nextBtn.title = this.nextBtn.getAttribute('aria-label')
   }
 
   disableButtons() {
