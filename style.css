@@ -1,0 +1,125 @@
+html,body {
+  box-sizing: border-box;
+  height:  100%;
+  width:  100%;
+  display:  grid;
+  place-items:  center;
+}
+
+#app {
+  height:  100%;
+  width:  100%;
+}
+
+.slide-wrapper {
+  border-radius: 2rem;
+  position: relative;
+  overflow:  hidden;
+  margin:  auto;
+  max-width:  100%;
+  width: 768px;
+  height:  100%;
+
+.slide-inner {
+  cursor: grab;
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  flex-flow: row nowrap;
+  height:  100%;
+  width:  100%;
+  transform:  translateX(-100%);
+
+}
+
+.slide-inner.smooth {
+  -webkit-transition:  all 500ms ease;
+  -moz-transition:  all 500ms ease;
+  transition:  all 500ms ease;
+}
+
+.slide {
+  flex:  0 0 100%;
+  display:  grid;
+  place-items:  center;
+  height:  100%;
+  width:  100%;
+}
+
+.slide:focus {
+  background: lightblue;
+}
+
+#prev,
+#next {
+  background: transparent;
+  border: 2px solid #fff;
+  color:  #fff;
+  border-radius:  50%;
+  display:  flex;
+  align-items: center;
+  justify-content: center;
+  font-size:  32px;
+  line-height: calc(50 / 16 * 1rem);
+  height:  calc(50 / 16 * 1rem);
+  width:  calc(50 / 16 * 1rem);
+  position:  absolute;
+  cursor:  pointer;
+  z-index: 1;
+  top:  50%;
+  transform:  translate(0, -50%);
+  -moz-transition:  all 300ms ease;
+  -webkit-transition:  all 300ms ease;
+  transition:  all 350ms ease;
+}
+
+#prev span,
+#next span {
+  position:  relative;
+  height:  100%;
+  width: 100%;
+  display: block;
+  font-size:  100%;
+
+}
+
+#prev span::before {
+  position:  absolute;
+  top:  50%;
+  left:  50%;
+  height:  100%;
+  width: 100%;
+  transform:  translate(-50%, -64%);
+  content: "\00AB";
+}
+#next span::before{
+  position:  absolute;
+  top:  50%;
+  left:  50%;
+  height:  100%;
+  width: 100%;
+  transform:  translate(-50%, -64%);
+  content: "\00BB";
+}
+
+#prev:hover,
+#prev:active,
+#next:hover,
+#next:active {
+  background:  #333;
+  color:  #fff;
+}
+
+#prev {
+  left:  0;
+  margin-left:  2rem;
+}
+
+#next {
+  margin-right:  2rem;
+  right:  0;
+  
+
+button:focus{
+  outline:  2px dashed black;
+}
