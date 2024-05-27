@@ -61,10 +61,58 @@ class Carousel {
     this.innerContainer.addEventListener('pointermove', this.handlePointerMove.bind(this))
     this.innerContainer.addEventListener('pointerup', this.handlePointerUp.bind(this))
 
+      this.innerContainer.addEventListener('touchstart', this.handleTouchStart.bind(this))
+    this.innerContainer.addEventListener('touchmove', this.handleTouchMove.bind(this))
+    this.innerContainer.addEventListener('touchend', this.handleTouchEnd.bind(this))
+
+
+
     this.updateButtons()
     this.setAriaCurrent()
      this.innerContainer.setAttribute('role', 'slider')
      this.start()
+  }
+
+  handleTouchStart(e) {
+    this.pointerIsDown = true
+    this.startClientX = e.touches[0].clientX
+  }
+
+  handleTouchMove(e) {
+    if (!this.pointerIsDown) return
+    this.disableButtons() 
+    this.currentClientX  = e.touches[0].clientX
+
+    let diff = this.currentClientX - this.startClientX
+
+    let tmpTransition = -this.currentIndex * 100
+
+    if (diff > 50) {
+      tmpTransition = tmpTransition + 15
+
+    }
+
+    if (diff < -50) {
+      tmpTransition = tmpTransition - 15
+    }
+
+    this.innerContainer.style.transform = `translateX(${tmpTransition}%)`  
+  }
+
+  handleTouchEnd(e) {
+    let diff = this.currentClientX - this.startClientX
+
+    if (diff > 50) {
+      this.incrementSlide("reverse")
+
+    }
+
+    if (diff < -50) {
+      this.incrementSlide("forward")
+    }
+    this.pointerIsDown = false
+    this.enableButtons()
+
   }
 
   handlePointerDown(e) {
