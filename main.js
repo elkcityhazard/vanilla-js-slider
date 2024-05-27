@@ -84,7 +84,6 @@ class Carousel {
 
   handleResize() {
     let width = window.innerWidth
-    console.log(width)
    switch (true) {
    case width < 768:
     this.auto = false
