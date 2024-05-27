@@ -315,12 +315,6 @@ class Carousel {
 
   enableButtons() {
 
-    if (window.innerWidth < 768) {
-      this.prevBtn.style.display = "none"
-      this.nextBtn.style.display = "none"
-      return
-    }
-
     this.prevBtn.style.display = "block"
     this.nextBtn.style.display = "block"
   }

@@ -95,6 +95,14 @@ main {
   -moz-transition:  all 300ms ease;
   -webkit-transition:  all 300ms ease;
   transition:  all 350ms ease;
+  opacity:  0;
+}
+
+@media screen and (min-width: 767px) {
+  #prev,
+  #next {
+    opacity:  1;
+  }
 }
 
 #prev span,
