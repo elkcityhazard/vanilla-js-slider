@@ -62,6 +62,8 @@ class Carousel {
       this.handleKeyDown(e)
     }.bind(this))
 
+    window.addEventListener('resize', debounce(this.handleResize.bind(this), 300));
+
     this.innerContainer.addEventListener('pointerdown', this.handlePointerDown.bind(this))
     this.innerContainer.addEventListener('pointermove', this.handlePointerMove.bind(this))
     this.innerContainer.addEventListener('pointerup', this.handlePointerUp.bind(this))
@@ -78,6 +80,12 @@ class Carousel {
     this.innerContainer.setAttribute('role', 'slider')
      this.start()
   }
+
+  handleResize() {
+    // blank return for now
+    return
+   
+   }
 
   handleKeyDown(e) {
     if (e.key === 'ArrowLeft') {
@@ -325,6 +333,18 @@ class Carousel {
   }
 
 
+}
+
+function debounce(func, delay) {
+  let timeoutId;
+  return function () {
+    const context = this;
+    const args = arguments;
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+      func.apply(context, args);
+    }, delay);
+  };
 }
 
 
