@@ -70,6 +70,7 @@ class Carousel {
   handlePointerDown(e) {
     this.pointerIsDown = true
     this.startClientX = e.clientX
+    this.disableButtons()
 
   }
 
@@ -106,6 +107,7 @@ class Carousel {
       this.incrementSlide("forward")
     }
     this.pointerIsDown = false
+    this.enableButtons()
   }
 
   incrementSlide(direction) {
@@ -219,6 +221,16 @@ class Carousel {
 
     this.prevBtn.setAttribute('aria-label', `Go to slide #${prevVal}`)
     this.nextBtn.setAttribute('aria-label', `Go to slide #${nextVal}`)
+  }
+
+  disableButtons() {
+    this.prevBtn.style.display = "none"
+    this.nextBtn.style.display = "none"
+  }
+
+  enableButtons() {
+    this.prevBtn.style.display = "block"
+    this.nextBtn.style.display = "block"
   }
 
 
