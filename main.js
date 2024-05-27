@@ -70,12 +70,12 @@ class Carousel {
   handlePointerDown(e) {
     this.pointerIsDown = true
     this.startClientX = e.clientX
-    this.disableButtons()
 
   }
 
   handlePointerMove(e) {
     if (!this.pointerIsDown) return
+    this.disableButtons() 
     this.currentClientX  = e.clientX
 
     let diff = this.currentClientX - this.startClientX
