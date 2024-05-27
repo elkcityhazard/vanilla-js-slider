@@ -15,7 +15,7 @@ class Carousel {
     this.currentIndex = 1
     this.isTransitioning = false
     this.interval = 7000
-    this.auto = true
+    this.auto = false
     this.prevBtn = this.carousel.querySelector('#prev')
     this.nextBtn = this.carousel.querySelector('#next')
     this.timer = null
