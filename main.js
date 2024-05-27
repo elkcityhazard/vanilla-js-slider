@@ -108,6 +108,8 @@ class Carousel {
 
   }
 
+  // note handleTouch and handlePointer can probably be combined at one point, but not today
+
   handleTouchStart(e) {
     this.pointerIsDown = true
     this.startClientX = e.touches[0].clientX
