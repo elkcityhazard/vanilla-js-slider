@@ -18,6 +18,7 @@ main {
 
 .slide-wrapper {
   border-radius: 2rem;
+  box-shadow:  0 0 20px -10px #000;
   position: relative;
   overflow:  hidden;
   margin:  auto;
